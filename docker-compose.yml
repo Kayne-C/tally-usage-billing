@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: public.ecr.aws/docker/library/postgres:17
+    environment:
+      POSTGRES_PASSWORD: tally
+      POSTGRES_DB: tally
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d tally"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+
+  tally:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      Tally__ConnectionString: "Host=postgres;Username=postgres;Password=tally;Database=tally"
+      Tally__ApiKey: "${TALLY_API_KEY:-change-me-0123456789}"
+    ports:
+      - "8080:8080"

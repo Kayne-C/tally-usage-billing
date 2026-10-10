@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Tally.Core/Tally.Core.csproj" />
+    <Project Path="src/Tally.Server/Tally.Server.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Tally.Tests/Tally.Tests.csproj" />
+  </Folder>
+  <Folder Name="/bench/">
+    <Project Path="bench/Tally.Bench/Tally.Bench.csproj" />
+  </Folder>
+</Solution>
